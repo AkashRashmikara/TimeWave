@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender App</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <!-- <link rel="stylesheet" href="assets/styles/S_G_styles.css"> -->
+    <link rel="stylesheet" href="assets/styles/user.css">
+    <link rel="stylesheet" href="assets/styles/weekStyles.css">
+    <link rel="stylesheet" href="assets/styles/dayStyles.css">
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="assets/images/Logo-White.png" alt="Timewave Logo" />
+        </div>
+        
+        <!-- Footer Buttons and Profile Section -->
+        <div class="footer-profile-and-buttons">
+            <div class="footer-buttons">
+                <a href="#" class="button-hover"><i class="fas fa-search"></i></a> <!-- Search icon -->
+                  <select id="day-select" ng-change="showCalendarView()" ng-model="selectedView">
+                    <option value="none">Select View</option>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <!-- Other options -->
+                </select>
+                <a href="#" class="button-hover"><i class="fas fa-calendar-check"></i> Reservations</a> <!-- Reservation icon -->
+                <a href="#" class="button-hover"><i class="fas fa-cogs"></i> Configuration</a> <!-- Configuration icon -->
+            </div>
+            <div class="footer-profile" >
+                <div class="profile-dropdown">
+                    <div class="profile-circle">B</div>
+                    <span>Bruce Goodman</span>
+                    <i class="fas fa-chevron-down dropdown-icon" ng-click="toggleDropdown($event)"></i> <!-- Dropdown icon -->
+                </div>
+                <div class="dropdown-menu" ng-show="isDropdownVisible" style="display: block; position: absolute;">
+                    <a href="#" id="logout-option">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Section -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h2>Institution Configuration</h2>
+                <ul>
+                    <li><a href="#">Institutional Profile</a></li>
+                    <li><a href="#">Academic Schedules</a></li>
+                    <li><a href="#">Weekly Timetables</a></li>
+                    <li><a href="#">Academic Sessions</a></li>
+                    <li><a href="#">Facility Resources</a></li>
+                    <li><a href="#">Academic Departments</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>Administration</h2>
+                <ul>
+                    <li><a ng-click="userAccounts()">User Accounts</a></li>
+                    <li><a href="#">System Settings</a></li>
+                    <li><a href="#">Access Control</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="main-content" >
+           <div>
+            <h1>
+                <i class="fas fa-tachometer-alt"></i> <!-- Example icon -->
+                Welcome to the Dashboard!
+            </h1>
+           </div>
+           <div style="display: flex;">
+            <div class="timetable" id="calendar-content">
+            </div>
+            
+            <div class="side-conteiner">
+                
+            <!-- Calendar Section -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <span class="prev">&lt;</span>
+                    <span class="month">July</span>
+                    <span class="next">&gt;</span>
+                </div>
+                <div class="calendar-body">
+                    <div class="week-days">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="days">
+                        <!-- Previous month days -->
+                        <div class="prev-month">30</div>
+                        <div class="prev-month">1</div>
+                        <div class="prev-month">2</div>
+                        <div class="prev-month">3</div>
+                        <div class="prev-month">4</div>
+                        <div class="prev-month">5</div>
+                        <!-- Current month days -->
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                        <div>8</div>
+                        <div>9</div>
+                        <div>10</div>
+                        <div>11</div>
+                        <div>12</div>
+                        <div>13</div>
+                        <div>14</div>
+                        <div>15</div>
+                        <div>16</div>
+                        <div>17</div>
+                        <div>18</div>
+                        <div>19</div>
+                        <div>20</div>
+                        <div>21</div>
+                        <div>22</div>
+                        <div>23</div>
+                        <div>24</div>
+                        <div>25</div>
+                        <div>26</div>
+                        <div>27</div>
+                        <div>28</div>
+                        <div>29</div>
+                        <div>30</div>
+                        <div>31</div>
+                        <!-- Next month days -->
+                        <div class="next-month">1</div>
+                        <div class="next-month">2</div>
+                        <div class="next-month">3</div>
+                        <div class="next-month">4</div>
+                        <div class="next-month">5</div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Calendar Section -->
+             <!-- Network Hub Section -->
+    <div class="network-hub">
+        <h2 class="title">Network Hub</h2>
+        <div class="profiles">
+            <div class="profile">
+                <img src="assets/images/P1.jpg" alt="Profile 1">
+            </div>
+            <div class="profile">
+                <img src="assets/images/p2.jpeg" alt="Profile 2">
+            </div>
+            <div class="profile">
+                <img src="assets/images/p3.jpeg" alt="Profile 3">
+            </div>
+        </div>
+        <div class="notices">
+            <div class="notice-header">
+                <p class="daily-notice">Daily Notice</p>
+                <p class="see-all">See all</p>
+            </div>
+            <div class="notice">
+                <h3>System Update Reminder</h3>
+                <p>A new system update will be applied tonight at 2 AM. Please ensure your devices are connected to the network before the update begins.</p>
+                <a href="#">See More...</a>
+            </div>
+            <div class="notice">
+                <h3>New Device Connected</h3>
+                <p>A new device, [Device Name], has been successfully added to your network hub.</p>
+                <a href="#">See More...</a>
+            </div>
+            <div class="notice">
+                <h3>Backup Status</h3>
+                <p>Your scheduled network backup completed successfully at [Time]. No issues were detected.</p>
+                <a href="#">See More...</a>
+            </div>
+        </div>
+    </div>
+</div></div>
+        </div>        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

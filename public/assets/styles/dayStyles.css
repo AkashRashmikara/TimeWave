@@ -1,0 +1,121 @@
+
+
+.day_calendar-container {
+    width: 100% !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 10px 20px; /* Adjusted padding for better spacing */
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    width: 90%;
+    margin: 4px auto;
+}
+
+
+.timezone {
+    font-size: 12px;
+    color: #888;
+    margin-left: -50px; /* Reduced right margin */
+}
+
+.right-side {
+    display: flow-root;
+    align-items: center;
+    gap: 10px; /* Adds space between day and date */
+}
+
+.day {
+    font-size: 12px; /* Slightly larger for better readability */
+    font-weight: bold;
+    color: #888;
+    margin-left: 30px; /* Reduced margin for better alignment */
+}
+
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 24px;
+}
+
+.date-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Use 50% for a perfect circle */
+    background-color: #D4FF32;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; /* Removed excessive right margin */
+}
+
+.times {
+    display: flex;
+    flex-direction: column;
+    border-left: 0px solid #ddd;
+}
+
+.time {
+    height: 50px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    position: relative;
+    border-left: 0px solid #ddd;
+    border-top: 0px solid #ddd; /* Add horizontal lines */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.time:first-child {
+    border-top: none; /* Remove the border on the first element */
+}
+
+.time::before {
+    content: '';
+    position: absolute;
+    left: 80px; /* Adjusted to align better with text */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #ddd; /* Line color */
+}
+
+/* Create the shorter horizontal line using ::after */
+.time::after {
+    content: '';
+    position: absolute;
+    left: 40px; /* Adjust to control start position */
+    right: 80px; /* Adjust to control end position */
+    bottom: 1px;
+    height: 1px;
+    background-color: #ddd; /* Line color */
+}
+
+.times .time:first-child::before {
+    top: -30px; /* Adjust this value to extend the line higher */
+}
+
+.time:nth-child(even) {
+    background-color: #fff; /* Alternating row color */
+}
+
+.time:last-child::after {
+    display: none;
+}
+}

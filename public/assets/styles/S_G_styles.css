@@ -1,0 +1,561 @@
+/* General styles */
+body {
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Container for dashboard layout */
+.dashboard-container {
+    display: flex;
+    flex-grow: 1;
+    margin-top: 64px; /* Space for the fixed footer */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    position: fixed;
+    top: 64px; /* Space for fixed footer */
+    left: 0;
+    overflow-y: auto;
+}
+
+/* Adjust main content margin to accommodate the fixed sidebar */
+.main-content {
+    margin-left: 250px; /* Space for fixed sidebar */
+    margin-top: 0px;
+    flex-grow: 1;
+    padding: 40px;
+    background-color: #f8f8f8;
+}
+
+/* Main Content Heading Style */
+.main-content h1 {
+    font-size: 24px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+}
+
+.main-content h1 i {
+    margin-right: 10px;
+    font-size: 28px;
+    color: #d3fc1f;
+}
+
+/* Sidebar section styles */
+.sidebar-section {
+    margin-bottom: 40px;
+}
+
+.sidebar-section h2 {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.sidebar-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-section ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-section ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 8px 12px;
+    display: flex;
+    transition: background-color 0.2s ease, color 0.2s ease, border-radius 0.2s ease;
+}
+
+.sidebar-section ul li a:hover {
+    background-color: #D4FF32;
+    color: #000;
+    border-radius: 5px;
+}
+
+/* Footer General Styles */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+    height: 64px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+/* Footer Logo Section */
+.footer-logo img {
+    height: 56px;
+    margin-right: 4px;
+}
+
+/* Container for Profile and Buttons */
+.footer-profile-and-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Footer buttons */
+.footer-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-buttons a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-radius 0.2s ease;
+    font-weight: 500;
+}
+
+.footer-buttons i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+/* Hover effects for the buttons */
+.footer-buttons a:first-child:hover {
+    background-color: #d3fc1f;
+    color: #fff;
+    border-radius: 50%;
+    transform: scale(1.1);
+    padding: 10px;
+    transition: transform 0.15s ease;
+}
+
+.footer-buttons a:not(:first-child):hover {
+    background-color: #d3fc1f;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Profile Section */
+.footer-profile {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 2px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.profile-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.footer-profile span {
+    font-weight: 600;
+}
+
+.profile-circle {
+    width: 30px;
+    height: 30px;
+    background-color: #d3fc1f;
+    color: #000;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.profile-dropdown i {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 120px;
+    display: none;
+    top: 100%;
+    right: 0;
+    margin-top: 2px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #D4FF32;
+}
+
+/* Ensure dropdowns have consistent styling */
+.day-select {
+    margin-right: 8px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+/* Notices Section */
+.notices {
+    text-align: left;
+}
+
+.notice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.daily-notice, .see-all {
+    font-weight: bold;
+}
+
+.see-all {
+    color: #555;
+    cursor: pointer;
+}
+
+.notice {
+    margin-bottom: 12px;
+}
+
+.notice h3 {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #000;
+}
+
+.notice p {
+    font-size: 0.8rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.notice a {
+    color: #000;
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+.user-management {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 10px;
+  padding: 0;
+}
+
+.user-management h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.manage-users-title {
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Create a custom underline using the ::after pseudo-element */
+.manage-users-title::after {
+    content: ''; /* Necessary for the pseudo-element */
+    display: block; /* Makes it act like a block element */
+    height: 2px; /* Height of the underline */
+    background-color: #555; /* Color of the underline */
+    margin-top: 4px; /* Adjust the gap between text and underline */
+    width: 14%; /* Full width under the text */
+    position: absolute; /* Absolute positioning to place it correctly */
+    left: 0; /* Align to the left */
+    bottom: -5px; /* Adjust this value to change the distance from the text */
+}
+
+.header-actions {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+/* Base styles for create user button */
+.create-user-btn {
+    border: none;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    padding: 10px 20px; /* Padding around the button */
+    display: inline-flex;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #808080;
+    transition: color 0.3s ease, border 0.3s ease; /* Smooth transition for color and border */
+    align-items: center;
+    background-color: transparent;
+    box-sizing: border-box;
+    height: 40px; /* Fixed height to prevent movement */
+    width: auto;
+    max-width: 200px;
+    position: relative; /* Position relative for possible effects */
+}
+
+.import-user-btn {
+    border: none;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    padding: 10px 20px; /* Padding around the button */
+    display: inline-flex;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #808080;
+    transition: color 0.3s ease, border 0.3s ease; /* Smooth transition for color and border */
+    align-items: center;
+    background-color: transparent;
+    box-sizing: border-box;
+    height: 40px; /* Fixed height to prevent movement */
+    width: auto;
+    max-width: 200px;
+    position: relative; /* Position relative for possible effects */
+}
+
+/* Icon style within the button */
+.create-user-btn .custom-icon,
+.import-user-btn .custom-icon {
+    width: 18px; /* Adjust size */
+    height: 18px;
+    margin-right: 8px; /* Space between icon and text */
+    opacity: 0.6;
+    filter: grayscale(100%) brightness(0.8);
+    transition: opacity 0.3s ease; /* Smooth transition for icon opacity */
+}
+
+/* Hover effect for both buttons */
+.create-user-btn:hover,
+.import-user-btn:hover {
+    color: #000; /* Text turns dark on hover */
+    background-color: transparent; /* Maintain background color */
+}
+
+/* Icon hover effect */
+.create-user-btn:hover .custom-icon,
+.import-user-btn:hover .custom-icon {
+    opacity: 1; /* Full color on hover */
+    filter: grayscale(0); /* Remove grayscale on hover */
+}
+
+.with-divider {
+    display: flex;
+    justify-content: flex-start; /* Ensures they are aligned to the left by default */
+    margin-right: 736px; /* Adjust this value to move the buttons more to the right */
+    margin-top: 32px;
+}  
+
+/* Add a vertical line (divider) between the bottom buttons only */
+.with-divider .create-user-btn {
+    position: relative;
+    padding-right: 20px;
+    border-right: 1px solid #ccc; /* Divider line */
+}
+
+.with-divider .import-user-btn {
+    margin-left: 20px;
+}
+
+/* Ensure the top "Create Users" button is not affected */
+.header-actions .create-user-btn {
+    border-right: none; /* Remove any divider on the top button */
+}
+
+.search-bar{
+    flex-grow: 1;
+    position: relative;
+}
+
+.search-bar input {
+  padding: 8px 16px 8px 40px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  transition: width 0.3s ease;
+  font-family: 'space Grotesk', Arial, sans-serif;
+}
+
+.search-bar input:focus {
+    width: 450px;
+    outline: none;
+}
+
+/* Styling for the custom icon*/
+.search-bar .custom-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    opacity: 0.6;
+    filter: grayscale(100%) brightness(00.8);
+    pointer-events: none;
+}
+
+.search-bar input:focus ~ .custom-icon {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px 2px;
+  margin-bottom: 16px;
+}
+
+.users-table th,
+.users-table td {
+  padding: 10px;
+  text-align: center;
+  font-weight: bolder;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table thead {
+  background-color: #d1ff00;
+}
+
+.users-table tbody {
+  background-color: #f5ffe8;
+}
+
+.user-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.users-table .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center; /* Align items to the left */
+    align-items: center; /* Vertically align the buttons */
+    gap: 2px; /* Add space between the buttons */
+    height: 100%;
+}
+
+.actions button {
+    display: flex; /* Ensure buttons are displayed inline */
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    font-family: 'Space Grotesk', Arial, sans-serif; /* Add this line */
+    font-weight: bold;
+    font-size: 12px;
+    color: #808080; /* Text color */
+    transition: color 0.3s ease, border 0.3s ease;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 4px; /* Space between icon and text */
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Adjust the spacing between the buttons */
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    color: #808080;
+    cursor: pointer;
+    padding: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.delete-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    color: #808080;
+    cursor: pointer;
+    padding: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Hover effects */
+.edit-button:hover, .delete-button:hover {
+    color: #000;
+    font-weight: bold;
+}
+
+.edit-button:hover .button-icon, .delete-button:hover .button-icon {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+

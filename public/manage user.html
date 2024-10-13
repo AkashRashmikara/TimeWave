@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="assets/styles/S_G_styles.css">
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body ng-controller="MyController">
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="assets/images/Logo-White.png" alt="Timewave Logo" />
+        </div>
+        
+        <!-- Footer Buttons and Profile Section -->
+        <div class="footer-profile-and-buttons">
+            <div class="footer-buttons">
+                <a href="#" class="button-hover"><i class="fas fa-search"></i></a> <!-- Search icon -->
+                <select id="day-select" class="day-select">
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                </select>
+                <a href="#" class="button-hover"><i class="fas fa-calendar-check"></i> Reservations</a> <!-- Reservation icon -->
+                <a href="#" class="button-hover"><i class="fas fa-cogs"></i> Configuration</a> <!-- Configuration icon -->
+            </div>
+            <div class="footer-profile">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="profile-circle">B</div>
+                    <span>Bruce Goodman</span>
+                    <i class="fas fa-chevron-down dropdown-icon"></i> <!-- Dropdown icon -->
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+                    <a href="#" id="logout-option">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Section -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h2>Institution Configuration</h2>
+                <ul>
+                    <li><a href="#">Institutional Profile</a></li>
+                    <li><a href="#">Academic Schedules</a></li>
+                    <li><a href="#">Weekly Timetables</a></li>
+                    <li><a href="#">Academic Sessions</a></li>
+                    <li><a href="#">Facility Resources</a></li>
+                    <li><a href="#">Academic Departments</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>Administration</h2>
+                <ul>
+                    <li><a href="#">User Accounts</a></li>
+                    <li><a href="#">System Settings</a></li>
+                    <li><a href="#">Access Control</a></li>
+                </ul>
+            </div>
+        </div>
+    <!-- Assuming your existing header or footer is already present -->
+<div class="main-content">
+    <!-- Navigation bar would be here (if not already included) -->
+  
+    <!-- User Management Section -->
+<div class="user-management">
+    <h2 class="manage-users-title">Manage Users</h2>
+</div>
+
+  
+      <!-- Create Users and Search Bar -->
+      <div class="header-actions">
+        <button class="create-user-btn">
+            <img src="assets/images/carbon--add-filled.png" alt="Custom Icon" class="custom-icon"> Create Users
+        </button>                
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <img src="assets/images/flowbite--search-outline.png" class="custom-icon" alt="Search Icon">
+        </div>        
+      </div>
+  
+      <!-- Users Table -->
+      <table class="users-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Activated</th>
+            <th>User Name</th>
+            <th>Display Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="assets/images/mdi--shield-user.png" alt="admin-icon" class="user-icon"></td>
+            <td><img src="assets/images/ic--outline-done-all.png" alt="activated-icon" class="user-icon"></td>
+            <td>Bruce Goodman</td>
+            <td>B_Goodman</td>
+            <td>
+                <button class="edit-button">
+                    <img src="assets/images/bxs--edit.png" alt="Edit" class="button-icon">
+                    Edit
+                </button>
+                <button class="delete-button">
+                    <img src="assets/images/mdi-light--delete.png" alt="Delete" class="button-icon">
+                    Delete
+                </button>                
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Create and Import Users Buttons at Bottom -->
+      <div class="footer-actions">
+        <div class="button-container with-divider">
+            <button class="create-user-btn"><img src="assets/images/carbon--add-filled.png" alt="Custom Icon" class="custom-icon">Create Users</button>
+            <button class="import-user-btn"><img src="assets/images/mdi--import (1).png" alt="Custom-Icon" class="custom-icon">Import Users</button>
+        </div> 
+    </div>
+  
+    <!-- Calendar Section Below -->
+    <div class="calendar-container">
+      <!-- Calendar structure here -->
+    </div>
+  </div>
+       
+
+    <script>
+        // JavaScript for dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+    
+            profileDropdown.addEventListener('click', function() {
+                // Toggle visibility
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+                console.log('Dropdown clicked, current display:', dropdownMenu.style.display); // Debug log
+            });
+    
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', function(event) {
+                if (!event.target.closest('.profile-dropdown')) {
+                    dropdownMenu.style.display = 'none'; // Hide dropdown
+                    console.log('Clicked outside, hiding dropdown'); // Debug log
+                }
+            });
+    
+            // Logout action (Optional)
+            document.getElementById('logout-option').addEventListener('click', function() {
+                alert('Logging out...'); // Replace with actual logout functionality
+            });
+        });
+    </script>    
+</body>
+</html>
