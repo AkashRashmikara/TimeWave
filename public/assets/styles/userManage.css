@@ -1,54 +1,29 @@
-/* General styles */
-body {
-    font-family: 'Space Grotesk', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-}
 
-* {
-    box-sizing: border-box;
-}
-
-/* Container for dashboard layout */
-.dashboard-container {
-    display: flex;
-    flex-grow: 1;
-    margin-top: 64px; /* Space for the fixed footer */
-}
-
-/* Sidebar styles */
-.sidebar {
-    width: 250px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-right: 1px solid #ddd;
-    height: 100vh;
-    position: fixed;
-    top: 64px; /* Space for fixed footer */
-    left: 0;
-    overflow-y: auto;
-}
-
-/* Adjust main content margin to accommodate the fixed sidebar */
-.main-content {
-    margin-left: 250px; /* Space for fixed sidebar */
+.user-content {
+    margin-left: 10px; 
+    margin-right: auto;
     margin-top: 0px;
     flex-grow: 1;
     padding: 40px;
     background-color: #f8f8f8;
 }
 
+@media(min-width: 1024px) {
+    .user-content{
+        margin-right: auto;
+        margin-left: 10px;
+        width: 80%;
+    }
+}
 /* Main Content Heading Style */
-.main-content h1 {
+.user-content h1 {
     font-size: 24px;
     margin: 0 0 32px;
     display: flex;
     align-items: center;
 }
 
-.main-content h1 i {
+.user-content h1 i {
     margin-right: 10px;
     font-size: 28px;
     color: #d3fc1f;

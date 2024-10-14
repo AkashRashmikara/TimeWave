@@ -1,0 +1,16 @@
+{
+    "name": "timewave",
+    "version": "1.0.0",
+    "description": "This is a simple Timetable management tool",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "author": "Akash Rashmikara",
+    "license": "ISC",
+    "dependencies": {
+      "angular": "^1.8.0",       
+      "angular-route": "^1.8.0" 
+    }
+  }
+  

@@ -389,7 +389,7 @@ body {
         width: 250px;
         margin-left: auto;
     }
-    .timetable{
+    .timetable, .user-content{
         margin-right: 10px;
         margin-left: auto;
         width: 80%;
