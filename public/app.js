@@ -3,8 +3,14 @@ var app = angular.module('myApp', []);
 app.controller('MyController', function($scope, $http, $document, $window) {
     $scope.selectedView = 'none'; // Default value
     $scope.isDropdownVisible = false; // Track dropdown visibility
+    const today = new Date();
+    $scope.year = today.getFullYear();
+    $scope.month = today.getMonth();
+    $scope.monthName = getMonthName($scope.month);
     $scope.openForm = false;
     $scope.showUsers =false;
+    $scope.showCalender = false;
+    $scope.showUserForm = false;
 
       $scope.user = {
         name: '',
@@ -20,7 +26,67 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         department: 'hr', // Default to HR
         mobile: ''
     };
-    
+    $scope.userForm = {
+        schoolName: '',
+        websiteAddress: '',
+        logoFile: null,
+        deleteLogo: false
+    };
+    $scope.updateCalendar = function() {
+        const firstDayOfMonth = new Date($scope.year, $scope.month, 1).getDay();
+        const daysInMonth = new Date($scope.year, $scope.month + 1, 0).getDate();
+        const daysInPrevMonth = new Date($scope.year, $scope.month, 0).getDate();
+        
+        let calendarDays = [];
+        
+        for (let i = firstDayOfMonth - 1; i >= 0; i--) {
+            calendarDays.push({ day: daysInPrevMonth - i, isPrevMonth: true });
+        }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+            const isToday = i === today.getDate() && $scope.month === today.getMonth() && $scope.year === today.getFullYear();
+            calendarDays.push({ day: i, isToday: isToday });
+        }
+
+        const remainingCells = (7 - (calendarDays.length % 7)) % 7;
+        for (let i = 1; i <= remainingCells; i++) {
+            calendarDays.push({ day: i, isNextMonth: true });
+        }
+
+        $scope.calendarDays = calendarDays;
+    };
+
+    // Functions to change the month
+    $scope.nextMonth = function() {
+        if ($scope.month === 11) {
+            $scope.month = 0;
+            $scope.year++;
+        } else {
+            $scope.month++;
+        }
+        $scope.monthName = getMonthName($scope.month);
+        $scope.updateCalendar();
+    };
+
+    $scope.prevMonth = function() {
+        if ($scope.month === 0) {
+            $scope.month = 11;
+            $scope.year--;
+        } else {
+            $scope.month--;
+        }
+        $scope.monthName = getMonthName($scope.month);
+        $scope.updateCalendar();
+    };
+
+    function getMonthName(monthIndex) {
+        const monthNames = ["January", "February", "March", "April", "May", "June", 
+                            "July", "August", "September", "October", "November", "December"];
+        return monthNames[monthIndex];
+    }
+
+    $scope.updateCalendar()
+
 
     $scope.toggleDropdown = function(event) {
         console.log("button works");
@@ -42,8 +108,11 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         var contentDiv = document.getElementById('calendar-content');
         $scope.openForm = false;
         $scope.showUsers =false;
+        $scope.showUserForm = false;
         
         if ($scope.selectedView === 'day') {
+            
+    $scope.showCalender = true;
             fetch('day_calender.html')
                 .then(response => response.text())
                 .then(data => {
@@ -51,6 +120,7 @@ app.controller('MyController', function($scope, $http, $document, $window) {
                 })
                 .catch(error => console.error('Error loading day calendar:', error));
         } else if ($scope.selectedView === 'week') {
+            $scope.showCalender = true;
             fetch('week_calender.html')
                 .then(response => response.text())
                 .then(data => {
@@ -65,10 +135,75 @@ app.controller('MyController', function($scope, $http, $document, $window) {
 
     $scope.userAccounts = function() {
         console.log("User accounts button works");
-
+        $scope.showCalender = false;
         $scope.showUsers =false;
         $scope.openForm = true;
+        $scope.showUserForm = false;
     };
+    $scope.userForm = function() {
+        console.log("User Form accounts button works");
+        $scope.showCalender = false;
+        $scope.showUsers =false;
+        $scope.openForm = false;
+        $scope.showUserForm = true;
+    };
+
+    $scope.saveUserFormData = function() {
+        // Create formData object
+        const formData = {
+            schoolName: $scope.userForm.schoolName,
+            websiteAddress: $scope.userForm.websiteAddress,
+            deleteLogo: $scope.userForm.deleteLogo
+        };
+
+        // If there is a file selected, convert it to Base64
+        if ($scope.userForm.logoFile) {
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                // Once file is converted to Base64, add it to formData and save to localStorage
+                formData.logoFile = reader.result;
+                saveDataToLocalStorage(formData);
+            };
+            reader.readAsDataURL($scope.userForm.logoFile);
+        } else {
+            saveDataToLocalStorage(formData);
+        }
+    };
+
+    // Helper function to save data to localStorage
+    function saveDataToLocalStorage(formData) {
+        localStorage.setItem('userFormData', JSON.stringify(formData));
+        console.log('User Form Data Saved:', formData);
+        alert('Data saved successfully in local storage!');
+    }
+
+    // Function to handle form cancel
+    $scope.cancelForm = function() {
+        $scope.userForm = {
+            schoolName: '',
+            websiteAddress: '',
+            logoFile: null,
+            deleteLogo: false
+        };
+        alert('Form canceled');
+    };
+
+// Directive to handle file input binding
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
 
     $scope.submitForm = function() {
         if ($scope.user.password === $scope.user.confirmPassword) {
@@ -112,8 +247,10 @@ app.controller('MyController', function($scope, $http, $document, $window) {
 
     // Function to retrieve and display all users
     $scope.accessControl = function() {
+        $scope.showCalender = false;
         $scope.showUsers =true;
         $scope.openForm = false;
+        $scope.showUserForm = false;
         let allUsers = [];
         for (let i = 1; i <= localStorage.length; i++) {
             const userData = localStorage.getItem(`userdata${i}`);

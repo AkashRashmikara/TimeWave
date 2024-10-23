@@ -1,0 +1,48 @@
+
+      
+            <!-- School Information Form -->
+            <div class="user-form">
+                <form action="#" method="post"> <!-- Form element added here -->
+                    <fieldset>
+                        <legend>School Information</legend>
+                
+                        <div class="form-group">
+                            <label for="school-name">School Name</label>
+                            <input type="text" id="school-name" placeholder="This field is required">
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="website-address">Website Address</label>
+                            <input type="text" id="website-address" placeholder="Enter website address">
+                        </div>
+                    </fieldset>
+                
+                    <!-- School Logo Section -->
+                    <fieldset>
+                        <legend>School Logo</legend>
+                        <div class="form-group">
+                            <label for="currentLogo">Current Logo</label>
+                            <span id="currentLogo">None Found</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="fileUpload">File Upload</label>
+                            <input type="file" id="fileUpload">
+                        </div>
+                        <p class="note-text">Please note: Uploading a new logo will replace the existing one.</p>
+                        <div class="checkbox-group">
+                            <label for="deleteLogo">
+                                Delete logo?
+                                <input type="checkbox" id="deleteLogo">
+                            </label>
+                        </div> 
+                        <p class="important-text">Select this option to remove the current logo, If you're uploading  a new logo,the old one will be replaced automatically. </p>                       
+                    </fieldset>
+                    <!-- Move Buttons below the User Form -->
+                    <div class="user-form-buttons">
+                        <button class="btn-save">Save</button>
+                        <button class="btn-cancel" type="button">Cancel</button>
+                    </div>
+                </form> 
+            </div>
+    
+    

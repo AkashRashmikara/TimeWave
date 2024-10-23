@@ -73,7 +73,7 @@
                 <h2>Administration</h2>
                 <ul>
                     <li><a ng-click="userAccounts()">User Accounts</a></li>
-                    <li><a href="#">System Settings</a></li>
+                    <li><a ng-click="userForm()">System Settings</a></li>
                     <li><a ng-click="accessControl()">Access Control</a></li>
                 </ul>
             </div>
@@ -88,7 +88,7 @@
             </h1>
            </div>
            <div style="display: flex;">
-            <div class="timetable" id="calendar-content">
+            <div ng-show ="showCalender" class="timetable" id="calendar-content">
             </div>
 
             <!-- open form -->
@@ -240,78 +240,83 @@
                 </div>
               
               </div>
-                   
+                   <!-- School Information Form -->
+                   <div ng-show="showUserForm" class="user-form">
+                    <form ng-submit="saveUserFormData()"> <!-- Bind submit to a function in the controller -->
+                        <fieldset>
+                            <legend>School Information</legend>
+                
+                            <div class="form-group">
+                                <label for="school-name">School Name</label>
+                                <input type="text" id="school-name" ng-model="userForm.schoolName" placeholder="This field is required">
+                            </div>
+                
+                            <div class="form-group">
+                                <label for="website-address">Website Address</label>
+                                <input type="text" id="website-address" ng-model="userForm.websiteAddress" placeholder="Enter website address">
+                            </div>
+                        </fieldset>
+                
+                        <!-- School Logo Section -->
+                        <fieldset>
+                            <legend>School Logo</legend>
+                            <div class="form-group">
+                                <label for="currentLogo">Current Logo</label>
+                                <span id="currentLogo">None Found</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="fileUpload">File Upload</label>
+                                <input type="file" id="fileUpload" file-model="userForm.logoFile">
+                            </div>
+                            <p class="note-text">Please note: Uploading a new logo will replace the existing one.</p>
+                            <div class="checkbox-group">
+                                <label for="deleteLogo">
+                                    Delete logo?
+                                    <input type="checkbox" id="deleteLogo" ng-model="userForm.deleteLogo">
+                                </label>
+                            </div>
+                            <p class="important-text">Select this option to remove the current logo. If you're uploading a new logo, the old one will be replaced automatically.</p>                       
+                        </fieldset>
+                
+                        <!-- Buttons -->
+                        <div class="user-form-buttons">
+                            <button class="btn-save" type="submit">Save</button>
+                            <button class="btn-cancel" type="button" ng-click="cancelForm()">Cancel</button>
+                        </div>
+                    </form> 
+                </div>
+                
             
             
             <div class="side-conteiner">
                 
             <!-- Calendar Section -->
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <span class="prev">&lt;</span>
-                    <span class="month">July</span>
-                    <span class="next">&gt;</span>
-                </div>
-                <div class="calendar-body">
-                    <div class="week-days">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                    </div>
-                    <div class="days">
-                        <!-- Previous month days -->
-                        <div class="prev-month">30</div>
-                        <div class="prev-month">1</div>
-                        <div class="prev-month">2</div>
-                        <div class="prev-month">3</div>
-                        <div class="prev-month">4</div>
-                        <div class="prev-month">5</div>
-                        <!-- Current month days -->
-                        <div>1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
-                        <div>5</div>
-                        <div>6</div>
-                        <div>7</div>
-                        <div>8</div>
-                        <div>9</div>
-                        <div>10</div>
-                        <div>11</div>
-                        <div>12</div>
-                        <div>13</div>
-                        <div>14</div>
-                        <div>15</div>
-                        <div>16</div>
-                        <div>17</div>
-                        <div>18</div>
-                        <div>19</div>
-                        <div>20</div>
-                        <div>21</div>
-                        <div>22</div>
-                        <div>23</div>
-                        <div>24</div>
-                        <div>25</div>
-                        <div>26</div>
-                        <div>27</div>
-                        <div>28</div>
-                        <div>29</div>
-                        <div>30</div>
-                        <div>31</div>
-                        <!-- Next month days -->
-                        <div class="next-month">1</div>
-                        <div class="next-month">2</div>
-                        <div class="next-month">3</div>
-                        <div class="next-month">4</div>
-                        <div class="next-month">5</div>
-                    </div>
-                </div>
+<div class="calendar-container">
+    <div class="calendar-header">
+        <span class="prev" ng-click="prevMonth()">&lt;</span>
+        <span class="month">{{ monthName }} {{ year }}</span>
+        <span class="next" ng-click="nextMonth()">&gt;</span>
+    </div>
+    <div class="calendar-body">
+        <div class="week-days">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+        <div class="days">
+            <!-- Days will be dynamically generated here using ng-repeat -->
+            <div ng-repeat="day in calendarDays" ng-class="{'prev-month': day.isPrevMonth, 'next-month': day.isNextMonth, 'current-day': day.isToday}">
+                {{ day.day }}
             </div>
-            <!-- End of Calendar Section -->
+        </div>
+    </div>
+</div>
+<!-- End of Calendar Section -->
+
              <!-- Network Hub Section -->
     <div class="network-hub">
         <h2 class="title">Network Hub</h2>
