@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details Form</title>
+    <link rel="stylesheet" href="B styles 3.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Event details</legend>
+
+            <!-- Video Conferencing -->
+            <div class="form-row">
+                <div class="icon-label">
+                    <img src="Img/akar-icons--zoom-fill.png" alt="Video Icon">
+                </div>
+                <div class="custom-select-container">
+                    <label for="video-conference">Add video conferencing for virtual meetings</label>
+                    <div class="custom-dropdown">
+                        <img src="Img/mingcute--down-fill (5).png" alt="Dropdown Icon" class="dropdown-icon"> <!-- Your icon here -->
+                        <select id="video-conference">
+                            <option value="zoom">Zoom</option>
+                            <option value="teams">Microsoft Teams</option>
+                            <option value="google">Google Meet</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="form-row">
+                <div class="icon-label">
+                    <img src="Img/mdi--location.png" alt="Location Icon">
+                </div>
+                <div class="text-field">
+                    <input type="text" id="location" placeholder="Add Location">
+                </div>
+            </div>
+
+            <!-- Enable Alert -->
+            <div class="form-row">
+                <div class="icon-label">
+                    <img src="Img/iconamoon--notification-bold.png" alt="Alert Icon">
+                </div>
+                <div class="alert-button">
+                    <button type="button">Enable Alert</button>
+                </div>
+            </div>
+
+        </fieldset>
+        <!-- Back to Previous Button -->
+<div class="form-row">
+    <div class="back-button">
+        <button type="button">Back to Previous</button>
+    </div>
+</div>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,187 @@
+
+
+
+.form_2{
+    fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 10px;
+    color: #333;
+    margin-left: 16px;
+}
+
+/* Guidelines */
+p {
+    font-size: 10px;
+    margin-bottom: -4px;
+    font-weight: 600;
+    color: #444;
+}
+
+ul {
+    font-size: 10px;
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 24px;
+    color: #666;
+}
+
+/* Form Row */
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+.form-row label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-right: 10px;
+}
+
+/* Time Entry Fields */
+.time-entry {
+    display:flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 0px;
+    align-items: flex-start;
+    flex-grow: 1;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.time-entry label {
+    margin-bottom: 4px; /* Add some space between the label and the input */
+}
+
+.time-entry input[type="time"] {
+    font-size: 14px;
+    padding: 8px 32px 8px 12px;
+    width: 180px; /* Increased width for better usability */
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    background-image: url(Img/mdi--clock-time-two-outline.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.time-entry input[type="time"]::-webkit-inner-spin-button,
+.time-entry input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none; /* Remove default spin buttons in Chrome */
+    -webkit-appearance: none;
+}
+
+.time-entry input[type="time"]:focus {
+    outline: none;
+    border-color: #d3fc1f;
+    background-position: right 10px center;
+}
+
+/* Bookable Checkbox */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Days of the Week */
+.days-of-week {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.days-of-week div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+    padding: 0 10px;
+}
+
+.days-of-week label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 5px; /* Space between checkbox and label */
+}
+
+.days-of-week input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+
+/* Input Focus Styles (Applies to all input types except checkboxes) */
+input[type="time"]:focus,
+input[type="checkbox"]:focus {
+    outline: none;
+    border-color: #d3fc1f;
+}
+
+/* Optional: Add transition for smoother focus effect */
+input[type="time"] {
+    transition: border-color 0.3s ease;
+}
+
+/* Optional: Enhance the Bookable Checkbox Row */
+.form-row input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #d3fc1f; /* Primary button color */
+    color: #000;
+    border-radius: 5px;
+    border: 1px solid #666;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #000; /* Hover color */
+    color: #fff;
+}
+
+/* Additional styling for specific buttons (if needed) */
+.button-container button:first-child {
+    background-color: #fff; /* Different color for 'Advance Options' */
+}
+
+.button-container button:first-child:hover {
+    background-color: #d3fc1f; /* Hover color for 'Advance Options' */
+}
+}

@@ -1,0 +1,128 @@
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: calc(100vh - 64px);
+    padding: 20px;
+    height: 100%;
+}
+
+.form-section {
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background-color: #fff;
+}
+
+.user-form-department {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+
+
+/* Fieldset Styles */
+fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+    color: #333;
+}
+
+/* Form Group Styles */
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: justify;
+    flex: 0 0 25%;
+    display: block;
+    width: 20%;
+    margin-right: 10px;
+}
+
+/* Input Styles */
+.form-group input, .form-group textarea {
+    width: 64%;
+    padding: 10px;
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #fff;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #bbb;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #d3fc1f;
+}
+
+/* Buttons Section */
+.buttons {
+    margin-top: 20px;
+    display: flex; /* To align buttons horizontally */
+    justify-content:flex-start; /* Align buttons to the left */
+    gap: 12px; /* Add 32px gap between buttons */
+}
+
+/* Save button styling */
+.buttons .save {
+    background-color: #d3fc1f; /* Light gray background */
+    border: 1px solid #bbb; /* Black border for Save button */
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Cancel button styling */
+.buttons .cancel {
+    background-color: #fff; /* Light gray background */
+    border: none; /* No border for Cancel button */
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for both buttons */
+.buttons button:hover {
+    background-color: #fff; /* Bright yellow-green hover color */
+}
+
+/* Specific hover effect for Cancel button */
+.buttons .cancel:hover {
+    background-color: #000; /* Red hover color for Cancel button */
+    color: #fff;
+}
+
+}

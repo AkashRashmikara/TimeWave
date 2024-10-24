@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Section c.1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="section c.1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg px-4 fixed-top bg-white">
+          <a class="navbar-brand" href="#">
+            <img src="C:\Users\chamu\Downloads\Timewave\img\image 1.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav menu-navbar-nav">
+              <li class="nav-item">
+                <a href="#" class="nav-link main-btn"><i class="fas fa-search"></i></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link main-btn"><i class="fas fa-calendar-check"></i> Reservations</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link main-btn"><i class="fas fa-cogs"></i> Configuration</a>
+              </li>
+              <li>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle d-flex flex-row" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="profile-circle">B</div>
+                        Bruce Goodman
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+      </nav>
+
+
+      <div class="page pt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 sidebar shadow">
+                    <h5>Institution Configuration</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">Institutional Profile</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">Academic Schedules</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center active">Weekly Timetables</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">Academic Sessions</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">Facility Resources</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">Academic Departments</a></li>
+                    </ul>
+                    <h5 class="mt-4">Administration</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">User Accounts</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">System Settings</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-secondary pb-3 main-btn text-center">Access Control</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-8 pt-5 px-4">
+                    <div class="row">
+                        <div class="week-form">
+                            <h2 class="fw-bold mb-2">week</h2>
+                            
+                            <form>
+                                <div class="form-group mb-2">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Required">
+                                </div>
+                                
+                                <div class="form-group mb-2 d-flex flex-column">
+                                    <label class="fw-bold" for="color">Color</label>
+                                    <input type="color" id="color" name="color">
+                                </div>
+                        
+                                <div class="form-actions mt-3 d-flex gap-3">
+                                    <button type="submit" class="save-btn">Save</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>                        
+                    </div>
+                </div>
+    
+                
+                <div class="col-lg-2 right-panel pt-5">
+                    <div class="container- calendar-container">
+                        <div class="calendar-header d-flex justify-content-between alling-items-center mb-2 fw-bold">
+                            <span class="prev">&lt;</span>
+                            <span class="month">July</span>
+                            <span class="next">&gt;</span>
+                        </div>
+                        <div class="calendar-body">
+                            <div class="week-days fw-bold pb-2 small">
+                                <div>Sun</div>
+                                <div>Mon</div>
+                                <div>Tue</div>
+                                <div>Wed</div>
+                                <div>Thu</div>
+                                <div>Fri</div>
+                                <div>Sat</div>
+                            </div>
+                            <div class="days">
+                                <div class="prev-month">30</div>
+                                <div class="prev-month">1</div>
+                                <div class="prev-month">2</div>
+                                <div class="prev-month">3</div>
+                                <div class="prev-month">4</div>
+                                <div class="prev-month">5</div>
+                                <div>1</div>
+                                <div>2</div>
+                                <div>3</div>
+                                <div>4</div>
+                                <div>5</div>
+                                <div>6</div>
+                                <div>7</div>
+                                <div>8</div>
+                                <div>9</div>
+                                <div>10</div>
+                                <div>11</div>
+                                <div>12</div>
+                                <div>13</div>
+                                <div>14</div>
+                                <div>15</div>
+                                <div>16</div>
+                                <div>17</div>
+                                <div>18</div>
+                                <div>19</div>
+                                <div>20</div>
+                                <div>21</div>
+                                <div>22</div>
+                                <div>23</div>
+                                <div>24</div>
+                                <div>25</div>
+                                <div>26</div>
+                                <div>27</div>
+                                <div>28</div>
+                                <div>29</div>
+                                <div>30</div>
+                                <div>31</div>
+                                <div class="next-month">1</div>
+                                <div class="next-month">2</div>
+                                <div class="next-month">3</div>
+                                <div class="next-month">4</div>
+                                <div class="next-month">5</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Calendar Section -->        
+    
+                    <div class="network-hub pt-3">
+                        <h5 class="text-center">Network Hub</h5>
+                        <div class="profile-carousel d-flex justify-content-center gap-2">
+                            <img src="https://via.placeholder.com/60" alt="Profile 1" class="profile-img">
+                            <img src="https://via.placeholder.com/60" alt="Profile 2" class="profile-img">
+                            <img src="https://via.placeholder.com/60" alt="Profile 3" class="profile-img">
+                        </div>
+                        <div class="d-flex flex-row p-4 justify-content-between">
+                            <div>Daily Notice</div>
+                            <div><a href="#" class="nav-link fw-bold">See all</a></div>
+                        </div>
+                    </div>
+        
+                        <!-- Notifications -->
+                    <div class="notifications">
+                        <div class="notice pb-3">
+                            <h6 class="fw-bold">System Update Reminder</h6>
+                            <p class="text-secondary small">A new system update will be applied tonight at 2 AM. Please ensure your devices are connected to the network before the update begins.</p>
+                            <a href="#" class="fw-bold nav-link">See More ...</a>
+                        </div>
+                        <div class="notice pb-3">
+                            <h6 class="fw-bold">New Device Connected</h6>
+                            <p class="text-secondary small">A new device, [Device Name], has been successfully added to your network hub.</p>
+                            <a href="#" class="fw-bold nav-link">See More ...</a>
+                        </div>
+                        <div class="notice">
+                            <h6 class="fw-bold">Backup Status</h6>
+                            <p class="text-secondary small">Your scheduled network backup completed successfully at [Time]. No issues were detected.</p>
+                            <a href="#" class="fw-bold nav-link">See More ...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>  
+  </body>
+</html>

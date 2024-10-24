@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="assets/styles/styles.css">
     <link rel="stylesheet" href="assets/styles/userManage.css">
     <link rel="stylesheet" href="assets/styles/user.css">
+    <link rel="stylesheet" href="assets/styles/nstyles.css">
+    <link rel="stylesheet" href="assets/styles/S_A_styles.css">
     <link rel="stylesheet" href="assets/styles/weekStyles.css">
     <link rel="stylesheet" href="assets/styles/dayStyles.css">
+    <link rel="stylesheet" href="assets/styles/academic.css">
+    <link rel="stylesheet" href="assets/styles/createSchedules.css">
+    <link rel="stylesheet" href="assets/styles/B styles 3.css">
+    <link rel="stylesheet" href="assets/styles/B styles 2.css">
+    <link rel="stylesheet" href="assets/styles/F styles.css">
+    <link rel="stylesheet" href="assets/styles/f-2 styles.css">
+    <link rel="stylesheet" href="assets/styles/user.css">
     <!-- Include FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.24/angular-material.min.css">
@@ -61,20 +70,20 @@
             <div class="sidebar-section">
                 <h2>Institution Configuration</h2>
                 <ul>
-                    <li><a href="#">Institutional Profile</a></li>
-                    <li><a href="#">Academic Schedules</a></li>
-                    <li><a href="#">Weekly Timetables</a></li>
+                    <li><a ng-click="userForm()">Institutional Profile</a></li>
+                    <li><a ng-click="academicSch()">Academic Schedules</a></li>
+                    <li><a target="_blank" href="Section C/Section c.html">Weekly Timetables</a></li>
                     <li><a href="#">Academic Sessions</a></li>
-                    <li><a href="#">Facility Resources</a></li>
-                    <li><a href="#">Academic Departments</a></li>
+                    <li><a target="_blank" href="section E/section E.html">Facility Resources</a></li>
+                    <li><a ng-click="acedemicDepartments()">Academic Departments</a></li>
                 </ul>
             </div>
             <div class="sidebar-section">
                 <h2>Administration</h2>
                 <ul>
-                    <li><a ng-click="userAccounts()">User Accounts</a></li>
-                    <li><a ng-click="userForm()">System Settings</a></li>
-                    <li><a ng-click="accessControl()">Access Control</a></li>
+                    <li><a ng-click="accessControl()">User Accounts</a></li>
+                    <li><a >System Settings</a></li>
+                    <li><a ng-click="" >Access Control</a></li>
                 </ul>
             </div>
         </div>
@@ -286,9 +295,287 @@
                     </form> 
                 </div>
                 
+<!-- Academic Schedules start -->
+
+<div ng-show="showAcademicSchedules" class="timetable">
+    <!-- Academic Schedules Section -->
+    <h2 class="academic-schedules-title">Academic Schedules</h2>
+
+    <!-- Create Schedule Button -->
+    <button ng-click="createSchedule()" class="create-schedule-btn">
+        <img src="./assets/images/carbon--add-filled.png" alt="Schedule Icon" class="custom-icon">Create Schedule
+    </button>
+
+    <!-- Schedules Table -->
+    <div class="green-box">
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through the saved schedules -->
+                    <tr ng-repeat="schedule in schedules">
+                        <td>{{ schedule.name }}</td>
+                        <td>{{ schedule.description }}</td>
+                        <td>
+                            <button ng-click="editSchedule($index)">Edit</button>
+                            <button ng-click="deleteSchedule($index)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+                    
+
+                    <!-- Create schadule 1 -->
+                    <div ng-show="showCreateSchedule1" class="timetable">
+                        <div class="user-form">
+                            <form>
+                                <fieldset>
+                                    <legend>Schedule details</legend>
+                    
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" name="name" placeholder="This field is required" ng-model="schedule.name" required>
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea id="description" name="description" placeholder="Enter a brief description" ng-model="schedule.description" required></textarea>
+                                    </div>
+                                </fieldset>
+                    
+                                <div class="buttons">
+                                    <button ng-click="createSchedule2()" type="button" class="next-btn">Next</button>
+                                    <button type="button" class="cancel-btn" onclick="window.history.back();">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+<!-- Create Schedule 2 -->
+<div ng-show="showCreateSchedule2" class="timetable">
+    <form class="form_2" >
+        <fieldset>
+            <legend>Periods</legend>
+            <p>Guidelines for Time Entry:</p>
+            <ul>
+                <li>Please enter all times in the 24-hour format, ranging from 00:00 to 23:59.</li>
+                <li>Ensure that there are no overlapping time periods.</li>
+            </ul>
+
+            <div class="form-row">
+                <label for="bookable">Bookable</label>
+                <input type="checkbox" id="bookable">
+                <div class="time-entry">
+                    <label for="start-time">Start</label>
+                    <input type="time" id="start-time" required>
+                </div>
+                <div class="time-entry">
+                    <label for="end-time">End</label>
+                    <input type="time" id="end-time" required>
+                </div>                    
+            </div>
+            <div class="days-of-week">
+                <div>
+                    <input type="checkbox" id="mon" name="days">
+                    <label for="mon">Mon</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="tue" name="days">
+                    <label for="tue">Tue</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="wed" name="days">
+                    <label for="wed">Wed</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="thur" name="days">
+                    <label for="thur">Thur</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="fri" name="days">
+                    <label for="fri">Fri</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="sat" name="days">
+                    <label for="sat">Sat</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="sun" name="days">
+                    <label for="sun">Sun</label>
+                </div>
+                <!-- Repeat for other days -->
+            </div>
+        </fieldset>
+        <div class="button-container">
+            <button ng-click="createSchedule()" >Back</button>
+            <button ng-click="createSchedule3()" type="button">Advance Options</button>
+            <button ng-click="academicSch()" type="submit">Save</button>
+        </div>
+</div>
+
+<!-- Create Schedule 3 -->
+<div ng-show="showCreateSchedule3" class="timetable">
+    <form class="form_3">
+        <fieldset>
+            <legend>Event details</legend>
+
+            <!-- Video Conferencing -->
+            <div class="form-row">
+                <div class="icon-label">
+                    <img src="assets/images/akar-icons--zoom-fill.png" alt="Video Icon">
+                </div>
+                <div class="custom-select-container">
+                    <label for="video-conference">Add video conferencing for virtual meetings</label>
+                    <div class="custom-dropdown">
+                        <img src="assets/images/mingcute--down-fill (5).png" alt="Dropdown Icon" class="dropdown-icon"> <!-- Your icon here -->
+                        <select id="video-conference">
+                            <option value="zoom">Zoom</option>
+                            <option value="teams">Microsoft Teams</option>
+                            <option value="google">Google Meet</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="form-row">
+                <div class="icon-label">
+                    <img src="assets/images/mdi--location.png" alt="Location Icon">
+                </div>
+                <div class="text-field">
+                    <input type="text" id="location" placeholder="Add Location">
+                </div>
+            </div>
+
+            <!-- Enable Alert -->
+            <div class="form-row">
+                <div class="icon-label">
+                    <img src="assets/images/iconamoon--notification-bold.png" alt="Alert Icon">
+                </div>
+                <div ng-click="alertsStart()" class="alert-button">
+                    <button type="button">Enable Alert</button>
+                </div>
+            </div>
+            <div ng-show="showAlerts" class="timetable">
+                <div class="dropdown-container">
+                    <img src="assets/images/mingcute--down-fill (5).png" alt="Notification Icon" class="icon"> <!-- Replace with your icon path -->
+                    <select id="notification-dropdown" class="dropdown">
+                        <option>Notification</option>
+                        <option>Email</option>
+                        <!-- Add more options here if needed -->
+                    </select>
+                </div>
+                <div class="input-container">
+                    <input type="text" class="input-box" placeholder="">
+                </div>
+                <div class="dropdown-container">
+                    <img src="assets/images/mingcute--down-fill (5).png" alt="Minutes Icon" class="icon"> <!-- Replace with your icon path -->
+                    <select class="dropdown">
+                        <option>Minutes</option>
+                        <option>Hours</option>
+                        <option>Days</option>
+                        <!-- Add more options here if needed -->
+                    </select>
+                </div>
+                <button class="close-btn">&times;</button>
+            </div>
+
+        </fieldset>
+        <!-- Back to Previous Button -->
+<div class="form-row">
+    <div class="back-button">
+        <button ng-click="createSchedule2()" type="button">Back to Previous</button>
+    </div>
+</div>
+
+    </form>
+</div>
+
+
+
+<!-- Academic Deaprtments start -->
+
+<div ng-show="showAcademicDepartments" class="timetable">
+    <div class="container">
+        <h2>Academic Departments</h2>
+
+        <!-- Create Department Button -->
+        <div class="header-actions">
+            <button ng-click="acedemicDepartment2()" class="create-departments-btn">
+                <img src="assets/images/carbon--add-filled.png" alt="Custom Icon" class="custom-icon"> Create Departments
+            </button>
+        </div>
+
+        <!-- Table for Departments -->
+        <table class="table-container">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="department in departments">
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.description }}</td>
+                    <td>
+                        <button class="edit-button">
+                            <img src="assets/images/bxs--edit.png" alt="Edit" class="button-icon">Edit
+                        </button>
+                        <button class="delete-button" ng-click="deleteDepartment($index)">
+                            <img src="assets/images/mdi-light--delete.png" alt="Delete" class="button-icon">Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Schedule Details Form Section -->
+<div ng-show="showAcademicDepartments2" class="timetable">
+    <div class="user-form-department">
+        <form ng-submit="acedemicDepartment()">
+            <fieldset>
+                <legend>Departments details</legend>
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" ng-model="department.name" id="name" placeholder="This field is required" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" ng-model="department.description" placeholder="Enter description here" required></textarea>
+                </div>
+            </fieldset>
             
+            <!-- Buttons Section -->
+            <div class="buttons">
+                <button type="submit" class="save">Save</button>
+                <button type="button" class="cancel" ng-click="acedemicDepartments()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- End of Schedule Details Form Section -->
             
-            <div class="side-conteiner">
+
+
+<div class="side-conteiner">
                 
             <!-- Calendar Section -->
 <div class="calendar-container">

@@ -11,6 +11,13 @@ app.controller('MyController', function($scope, $http, $document, $window) {
     $scope.showUsers =false;
     $scope.showCalender = false;
     $scope.showUserForm = false;
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule1 = false;
+    $scope.showCreateSchedule2 = false;
+    $scope.showCreateSchedule3 = false;
+    $scope.showAcademicDepartments = false;
+    $scope.showAcademicDepartments2 = false;
+    $scope.showAlerts = false;
 
       $scope.user = {
         name: '',
@@ -32,6 +39,9 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         logoFile: null,
         deleteLogo: false
     };
+
+    $scope.schedules = JSON.parse(localStorage.getItem('schedules')) || [];
+    
     $scope.updateCalendar = function() {
         const firstDayOfMonth = new Date($scope.year, $scope.month, 1).getDay();
         const daysInMonth = new Date($scope.year, $scope.month + 1, 0).getDate();
@@ -109,6 +119,13 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         $scope.openForm = false;
         $scope.showUsers =false;
         $scope.showUserForm = false;
+        $scope.showAcademicSchedules = false;
+        $scope.showCreateSchedule1 = false;
+        $scope.showCreateSchedule2 = false;
+        $scope.showCreateSchedule3 = false;
+        $scope.showAcademicDepartments = false;
+        $scope.showAcademicDepartments2 =false;
+        $scope.showAlerts = false;
         
         if ($scope.selectedView === 'day') {
             
@@ -139,6 +156,13 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         $scope.showUsers =false;
         $scope.openForm = true;
         $scope.showUserForm = false;
+        $scope.showAcademicSchedules = false;
+        $scope.showCreateSchedule1 = false;
+        $scope.showCreateSchedule2 = false;
+        $scope.showCreateSchedule3 = false;
+        $scope.showAcademicDepartments = false;
+        $scope.showAcademicDepartments2 =false;
+        $scope.showAlerts = false;
     };
     $scope.userForm = function() {
         console.log("User Form accounts button works");
@@ -146,21 +170,260 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         $scope.showUsers =false;
         $scope.openForm = false;
         $scope.showUserForm = true;
+        $scope.showAcademicSchedules = false;
+        $scope.showCreateSchedule1 = false;
+        $scope.showCreateSchedule2 = false;
+        $scope.showCreateSchedule3 = false;
+        $scope.showAcademicDepartments = false;
+        $scope.showAcademicDepartments2 =false;
+        $scope.showAlerts = false;
     };
+    $scope.academicSch = function() {
+        $scope.loadSchedules();
+        console.log("User Form accounts button works");
+        $scope.showCalender = false;
+        $scope.showUsers =false;
+        $scope.openForm = false;
+        $scope.showUserForm = false;
+        $scope.showAcademicSchedules = true;
+        $scope.showCreateSchedule1 = false;
+        $scope.showCreateSchedule2 = false;
+        $scope.showCreateSchedule3 = false;
+        $scope.showAcademicDepartments = false;
+        $scope.showAcademicDepartments2 =false;
+        $scope.showAlerts = false;
+    };
+    
+
+$scope.createSchedule = function() {
+    $scope.showCalender = false;
+    $scope.showUsers =false;
+    $scope.openForm = false;
+    $scope.showUserForm = false;
+    $scope.showCreateSchedule2 = false;
+    $scope.showCreateSchedule3 = false;
+    $scope.showAcademicDepartments = false;
+    $scope.showAcademicDepartments2 =false;
+    $scope.showAlerts = false;
+    console.log("Creating new schedule");
+    $scope.schedule = {
+        name: '',
+        description: '',
+        periods: [],
+        videoConference: '',
+        location: ''
+    };
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule1 = true;
+};
+
+
+$scope.createSchedule2 = function() {
+    $scope.showCalender = false;
+    $scope.showUsers =false;
+    $scope.openForm = false;
+    $scope.showUserForm = false;
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule3 = false;
+    $scope.showAcademicDepartments = false;
+    $scope.showAcademicDepartments2 =false;
+    $scope.showAlerts = false;
+    if (!$scope.schedule || !$scope.schedule.name || !$scope.schedule.description) {
+        alert("Please enter both name and description.");
+    } else {
+        // Add new schedule to the schedules array
+        $scope.schedules.push({
+            name: $scope.schedule.name,
+            description: $scope.schedule.description
+        });
+
+        // Save the updated schedules array to local storage
+        localStorage.setItem('schedules', JSON.stringify($scope.schedules));
+
+        // Clear input fields after adding
+        $scope.schedule.name = '';
+        $scope.schedule.description = '';
+
+        // Proceed to the next schedule creation step
+        $scope.showCreateSchedule1 = false;
+        $scope.showCreateSchedule2 = true;
+    }
+};
+
+
+$scope.createSchedule3 = function() {
+    $scope.showCalender = false;
+    $scope.showUsers =false;
+    $scope.openForm = false;
+    $scope.showUserForm = false;
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule1 = false;
+    $scope.showAcademicDepartments = false;
+    $scope.showAcademicDepartments2 =false;
+    $scope.showAlerts = false;
+    console.log("Proceeding to Advanced Options");
+
+    const startTime = document.getElementById('start-time').value;
+    const endTime = document.getElementById('end-time').value;
+    const bookable = document.getElementById('bookable').checked;
+
+    const days = [];
+    document.querySelectorAll('input[name="days"]:checked').forEach((day) => {
+        days.push(day.id);
+    });
+
+    if (startTime && endTime && days.length > 0) {
+        // Add periods to the schedule
+        $scope.schedule.periods.push({
+            startTime,
+            endTime,
+            bookable,
+            days
+        });
+
+        $scope.showCreateSchedule2 = false;
+        $scope.showCreateSchedule3 = true;
+    } else {
+        alert("Please enter a valid time period and select at least one day.");
+    }
+};
+
+$scope.saveSchedule = function() {
+    console.log("Saving schedule");
+
+    const videoConference = document.getElementById('video-conference').value;
+    const location = document.getElementById('location').value;
+
+    $scope.schedule.videoConference = videoConference;
+    $scope.schedule.location = location;
+
+    $scope.schedules.push($scope.schedule);
+    localStorage.setItem('schedules', JSON.stringify($scope.schedules));
+
+    $scope.showCreateSchedule3 = false;
+    $scope.showAcademicSchedules = true;
+};
+
+$scope.loadSchedules = function() {
+    $scope.schedules = JSON.parse(localStorage.getItem('schedules')) || [];
+};
+
+$scope.deleteSchedule = function(index) {
+    $scope.schedules.splice(index, 1);
+
+    localStorage.setItem('schedules', JSON.stringify($scope.schedules));
+};
+
+
+$scope.editSchedule = function(index) {
+    $scope.schedule = angular.copy($scope.schedules[index]);
+
+    $scope.updateSchedule = function() {
+        $scope.schedules[index] = angular.copy($scope.schedule);
+
+        localStorage.setItem('schedules', JSON.stringify($scope.schedules));
+
+        $scope.schedule = {};
+    };
+};
+
+
+
+
+
+
+
+
+
+
+if (!localStorage.getItem('departments')) {
+    localStorage.setItem('departments', JSON.stringify([]));
+}
+
+$scope.acedemicDepartments = function() {
+    console.log("Displaying the departments");
+    $scope.showCalender = false;
+    $scope.showUsers = false;
+    $scope.openForm = false;
+    $scope.showUserForm = false;
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule1 = false;
+    $scope.showCreateSchedule2 = false;
+    $scope.showCreateSchedule3 = false;
+    $scope.showAcademicDepartments = true;
+    $scope.showAcademicDepartments2 = false;
+    $scope.showAlerts = false;
+
+    $scope.departments = JSON.parse(localStorage.getItem('departments')) || [];
+};
+
+$scope.acedemicDepartment2 = function() {
+    console.log("Opening the department form");
+    $scope.showCalender = false;
+    $scope.showUsers = false;
+    $scope.openForm = false;
+    $scope.showUserForm = false;
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule1 = false;
+    $scope.showCreateSchedule2 = false;
+    $scope.showCreateSchedule3 = false;
+    $scope.showAcademicDepartments = false;
+    $scope.showAcademicDepartments2 = true;
+    $scope.showAlerts = false;
+};
+$scope.alertsStart = function() {
+    console.log("Opening the department form");
+    $scope.showCalender = false;
+    $scope.showUsers = false;
+    $scope.openForm = false;
+    $scope.showUserForm = false;
+    $scope.showAcademicSchedules = false;
+    $scope.showCreateSchedule1 = false;
+    $scope.showCreateSchedule2 = false;
+    $scope.showCreateSchedule3 = true;
+    $scope.showAcademicDepartments = false;
+    $scope.showAcademicDepartments2 = false;
+    $scope.showAlerts = true;
+};
+
+$scope.acedemicDepartment = function() {
+    console.log("Saving department");
+
+    const departmentName = $scope.department.name;
+    const departmentDescription = $scope.department.description;
+
+    if (departmentName && departmentDescription) {
+        const newDepartment = {
+            name: departmentName,
+            description: departmentDescription
+        };
+
+        const departments = JSON.parse(localStorage.getItem('departments')) || [];
+
+        departments.push(newDepartment);
+
+        localStorage.setItem('departments', JSON.stringify(departments));
+
+        $scope.department.name = '';
+        $scope.department.description = '';
+
+        $scope.acedemicDepartments();
+    } else {
+        alert("Please enter both name and description.");
+    }
+};
+
 
     $scope.saveUserFormData = function() {
-        // Create formData object
         const formData = {
             schoolName: $scope.userForm.schoolName,
             websiteAddress: $scope.userForm.websiteAddress,
             deleteLogo: $scope.userForm.deleteLogo
         };
 
-        // If there is a file selected, convert it to Base64
         if ($scope.userForm.logoFile) {
             const reader = new FileReader();
             reader.onloadend = function() {
-                // Once file is converted to Base64, add it to formData and save to localStorage
                 formData.logoFile = reader.result;
                 saveDataToLocalStorage(formData);
             };
@@ -170,14 +433,20 @@ app.controller('MyController', function($scope, $http, $document, $window) {
         }
     };
 
-    // Helper function to save data to localStorage
+
+    $scope.deleteDepartment = function(index) {
+        const departments = JSON.parse(localStorage.getItem('departments'));
+        departments.splice(index, 1);
+        localStorage.setItem('departments', JSON.stringify(departments));
+        $scope.acedemicDepartments(); // Refresh the view
+    };
+    
     function saveDataToLocalStorage(formData) {
         localStorage.setItem('userFormData', JSON.stringify(formData));
         console.log('User Form Data Saved:', formData);
         alert('Data saved successfully in local storage!');
     }
 
-    // Function to handle form cancel
     $scope.cancelForm = function() {
         $scope.userForm = {
             schoolName: '',
@@ -251,6 +520,13 @@ app.directive('fileModel', ['$parse', function ($parse) {
         $scope.showUsers =true;
         $scope.openForm = false;
         $scope.showUserForm = false;
+        $scope.showAcademicSchedules = false;
+        $scope.showCreateSchedule1 = false;
+        $scope.showCreateSchedule2 = false;
+        $scope.showCreateSchedule3 = false;
+        $scope.showAcademicDepartments = false;
+        $scope.showAcademicDepartments2 =false;
+        $scope.showAlerts = false;
         let allUsers = [];
         for (let i = 1; i <= localStorage.length; i++) {
             const userData = localStorage.getItem(`userdata${i}`);

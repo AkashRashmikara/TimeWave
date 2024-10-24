@@ -1,0 +1,167 @@
+
+.form_3 {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+fieldset {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 10px;
+    color: #333;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Adjust size for icon */
+    height: 40px;
+    background-color: #f8f8f8; /* Light background */
+    border-radius: 50%; /* Round icon */
+    margin-right: 15px;
+}
+
+.icon-label img {
+    width: 20px;
+    height: 20px;
+}
+
+.custom-select-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* Match the box color */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    max-width: 300px; /* Reduced width to fit better */
+}
+
+.custom-select-container label {
+    font-size: 14px;
+    color: #333;
+    margin-right: 10px; /* Adjust the margin for better alignment */
+    flex-shrink: 0;
+}
+
+.custom-select-container select {
+    font-size: 14px;
+    padding: 6px;
+    border: 1px solid #ddd; /* Ensure the dropdown has a border */
+    border-radius: 4px;
+    background-color: #fff; /* Set a background color to make it visible */
+    flex-grow: 1;
+    appearance: none;
+    cursor: pointer;
+    width: 100%; /* Ensures the dropdown fills the container */
+}
+
+.custom-select-container select:focus {
+    outline: none;
+    border-color: #333; /* Slightly darker border on focus */
+}
+
+.text-field input {
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 148%;
+}
+
+.alert-button button {
+    padding: 12px 24px;
+    background-color: #d3fc1f;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #000;
+}
+
+.alert-button button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.custom-dropdown {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%; /* Set desired width */
+    max-width: 300px; /* Adjust max-width if needed */
+    position: relative; /* Needed for positioning the icon */
+    padding-left: 20px; /* Space for the icon on the left */
+}
+
+.dropdown-icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px; /* Adjust icon size */
+    position: absolute; /* Position it inside the dropdown */
+    left: 10px; /* Space from the left */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for centering */
+    pointer-events: none; /* Prevent click on the icon */
+}
+
+.custom-select-container select {
+    font-size: 14px;
+    padding: 6px 10px; /* Add padding to avoid overlap with the icon */
+    border: none; /* Remove default border */
+    border-radius: 4px;
+    background-color: #fff;
+    flex-grow: 1; /* Allow it to fill the space */
+    cursor: pointer;
+    appearance: none; /* Remove default dropdown arrow */
+    width: 100%; /* Full width */
+}
+
+.custom-select-container select:focus {
+    outline: none;
+    border-color: #333; /* Focus border color */
+}
+
+/* Back to Previous Button Styles */
+.back-button {
+    text-align: center; /* Center the button */
+    margin: 20px 0; /* Add space above and below */
+    width: 100%; /* Ensure the div takes full width */
+}
+
+.back-button button {
+    background-color: #fff;
+    color: #000; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for the button */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Align properly */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    width: 200px; /* Set a fixed width for the button */
+    font-family: 'Space Grotesk', sans-serif; /* Set the font family */
+    border: 1px solid #ddd;
+}
+
+/* Hover effect */
+.back-button button:hover {
+    background-color: #d3fc1f; /* Darker green on hover */
+}

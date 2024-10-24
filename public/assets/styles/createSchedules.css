@@ -1,4 +1,25 @@
 
+/* Container for dashboard layout */
+.dashboard-container {
+    display: flex;
+    flex-grow: 1;
+    margin-top: 64px; /* Space for the fixed footer */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    position: fixed;
+    top: 64px; /* Space for fixed footer */
+    left: 0;
+    overflow-y: auto;
+}
+
 /* Adjust main content margin to accommodate the fixed sidebar */
 .main-content {
     margin-left: 250px; /* Space for fixed sidebar */
@@ -6,7 +27,7 @@
     flex-grow: 1;
     padding: 40px;
     background-color: #f8f8f8;
-
+}
 
 /* Main Content Heading Style */
 .main-content h1 {
@@ -223,62 +244,45 @@
     margin-right: 8px;
 }
 
+/* Form Container */
+.form-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Center vertically */
+    flex-direction: column; /* Stack children vertically */
+    height: calc(100vh - 64px); /* Adjust for footer height */
+    padding: 20px; /* Add padding if needed */
+    height: 100%;
+}
+
+.form-section {
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background-color: #fff;
+}
+
 .user-form {
     max-width: 1000px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin: 64px -24px 16px;
     padding: 20px;
-    background-color: #f9f9f9;
+    box-sizing: border-box;
     border-radius: 10px;
+    margin-right: 256px;
+    margin-top: -32px;
+    width: 100%;
 }
 
-/* Adjusting only the width of the 'Type' select box */
-.user-form #user-type {
-    width: 270px; /* Keep the desired fixed width */
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    background-color: #fff;
-    text-align: center; /* Center the text */
-    appearance: none; /* Remove default dropdown arrow */
-    -webkit-appearance: none; /* For Safari */
-    -moz-appearance: none; /* For Firefox */
-    background-image: url('../images/mingcute--down-fill\ \(5\).png'); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: right 10px center; /* Position the arrow */
-    background-size: 16px;
-    padding-right: 30px; /* Adjust padding for the icon */
-    font-family: 'Space Grotesk', Arial, sans-serif; /* Change font for the select box */
-}
-
-/* Style for both the Type and Department dropdowns */
-#user-type, #department {
-    width: 270px; /* Keep the desired fixed width */
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    background-color: #fff;
-    text-align: center; /* Center the text */
-    appearance: none; /* Remove default dropdown arrow */
-    -webkit-appearance: none; /* For Safari */
-    -moz-appearance: none; /* For Firefox */
-    background-image: url('../images/mingcute--down-fill\ \(5\).png'); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: right 10px center; /* Position the arrow */
-    background-size: 16px;
-    padding-right: 30px; /* Adjust padding for the icon */
-    font-family: 'Space Grotesk', Arial, sans-serif; /* Change font for the select box */
-}
-
-
+/* Fieldset Styles */
 fieldset {
     border: 1px solid #e0e0e0;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
     width: 100%;
-    margin-right: 608px;
 }
 
 legend {
@@ -287,45 +291,15 @@ legend {
     color: #333;
 }
 
+/* Form Group Styles */
 .form-group {
-    display:flex !important;
+    display: flex;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.form-group input[type="checkbox"] {
-   appearance: auto;
-   width: 14px;
-   height: 14px;
-   border: 1px solid #bbb;
-   border-radius: 4px;
-   background-color: #fff;
-   cursor: pointer;
-   display: inline-block;
-   vertical-align: middle;
-   margin-left: 10px;
-   transition: background-color 0.3s, border-color 0.3s;
-}
-
-.form-group input[type="checkbox"]:checked {
-    background-color: #d3fc1f; /* Active color */
-    border-color: #d3fc1f;
-}
-
-.form-group input[type="checkbox"]:checked::before {
-    content: '✓';
-    color: #333; /* Checkmark color */
-    font-size: 12px;
-    display: block;
-    text-align: center;
-    line-height: 14px;
-}
-
-.form-group input[type="checkbox"]:hover {
-    border-color: #999; /* Border color on hover */
-}
-
 .form-group label {
+    font-family: 'Space Grotesk', Arial, sans-serif; /* Set font to Space Grotesk */
     font-size: 16px;
     color: #555;
     margin-bottom: 0;
@@ -333,81 +307,88 @@ legend {
     width: 150px;
 }
 
-.form-group input,
-.form-group select {
+/* Input Styles */
+.form-group input {
+    width: calc(80% - 160px); /* Adjust the width to accommodate the label */
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
     font-size: 16px;
     background-color: #fff;
-    width: calc(80% - 160px);
+    font-family:'Space Grotesk', Arial, sans-serif;
     display: block;
-    margin-left: 10px;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+input::placeholder {
+    color: #bbb;
+}
+
+input:focus {
     outline: none;
     border-color: #d3fc1f;
 }
 
-.form-group input[type="checkbox"] {
-    width: auto;
-    margin-right: 10px;
-}
-
-.form-buttons {
-    text-align: left;
-    width: 100%;
-}
-
-.btn-save, .btn-cancel {
-    padding: 10px 20px;
-    border: 1px solid transparent;
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%; /* Full width of the parent container */
+    max-width: 500px; /* You can set a max width as needed */
+    height: 40px; /* Height for the input */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border: 1px solid #ccc; /* Default border color */
+    padding: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
-    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effect */
+}
+
+.form-group textarea {
+    height: 150px; /* Set height for the textarea */
+    resize: vertical; /* Allows users to resize vertically */
+    border-radius: 10px;
+}
+
+/* Focus Effect (on click) */
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #d3fc1f; /* Change border color on focus (click) */
+    outline: none; /* Remove the default outline on focus */
+}
+
+/* Buttons Styling */
+/* Styles for the Next button */
+.next-btn {
+    padding: 10px 20px;
+    background-color: #d3fc1f; /* Green color for Next */
+    color: #000;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-family: 'Space Grotesk', Arial, sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk font */
+    margin-top: 8px;
+    margin-left: 64px;
 }
 
-.btn-save {
-    background-color: #d3fc1f;
-    color: #333;
-    margin-right: 10px;
+.next-btn:hover {
+    background-color: #d1ff2cc2; /* Darker green on hover */
 }
 
-.btn-cancel {
-    background-color: #fff;
-    color: #333;
+/* Styles for the Cancel button */
+.cancel-btn {
+    padding: 10px 20px;
+    color: #555;
+    border: none;
+    font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk font */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 8px;
+    margin-left: 8px;
 }
 
-.btn-save:hover {
-    opacity: 0.9;
-    border: 1px solid #555;
-    background-color: #f8f8f8;
-}
-
-.btn-cancel:hover{
-    opacity: 0.9;
-    background-color: #000;
-    color: #f8f8f8;
-}
-
-/* Apply the Space Grotesk font family to the error message */
-.error-message {
-    font-family: 'Space Grotesk', Arial, sans-serif;
-    color: red;
-    font-size: 14px;
-    display: none;
-}
-
-/* Style for the browser's default "This field is required" tooltip message */
-input:invalid {
-    font-family: 'Space Grotesk', Arial, sans-serif;
-}
-
-/* Style for custom validation messages */
-input:invalid ~ .error-message {
-    display: block;
-}
+.cancel-btn:hover {
+    background-color: #000; /* Darker red on hover */
+    color: #fff;
 }

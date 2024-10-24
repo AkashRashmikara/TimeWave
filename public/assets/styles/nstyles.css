@@ -1,0 +1,71 @@
+
+
+.notification-settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px; /* Padding around the notification settings */
+    border-radius: 5px; /* Rounded corners */
+    position: relative;
+    justify-content: space-between;
+    width: fit-content;
+}
+
+.dropdown-container {
+    display: flex;
+    align-items: center; /* Center icon and dropdown vertically */
+    position: relative;
+}
+
+#notification-dropdown,
+.dropdown {
+    padding: 10px 10px 10px 40px; /* Padding to fit the text */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 150px;
+    cursor: pointer;
+    appearance: none;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px; /* Adjust icon size */
+    margin-right: 5px; /* Space between icon and dropdown */
+    position: absolute;
+    right: 10px;
+}
+
+.input-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80px; /* Adjusted width for better usability */
+    font-size: 14px;
+    transition: border-color 0.3s; /* Added transition for smoother focus */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.input-box:focus {
+    border-color: #D4FF32; /* Change border color when focused */
+    outline: none; /* Remove outline */
+}
+
+.close-btn {
+    position: absolute;
+    top: 18px;
+    right: -18px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s; /* Smooth transition for color change */
+    margin-left: 10px;
+}
+
+.close-btn:hover {
+    color: #333;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="B styles 1.css"> <!-- Corrected space in file name -->
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="Img/logo.jpeg" alt="Timewave Logo" />
+        </div>
+        
+        <!-- Footer Buttons and Profile Section -->
+        <div class="footer-profile-and-buttons">
+            <div class="footer-buttons">
+                <a href="#" class="button-hover"><i class="fas fa-search"></i></a> <!-- Search icon -->
+                <select id="day-select" class="day-select">
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                </select>
+                <a href="#" class="button-hover"><i class="fas fa-calendar-check"></i> Reservations</a> <!-- Reservation icon -->
+                <a href="#" class="button-hover"><i class="fas fa-cogs"></i> Configuration</a> <!-- Configuration icon -->
+            </div>
+            <div class="footer-profile">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="profile-circle">B</div>
+                    <span>Bruce Goodman</span>
+                    <i class="fas fa-chevron-down dropdown-icon"></i> <!-- Dropdown icon -->
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+                    <a href="#" id="logout-option">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Section -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h2>Institution Configuration</h2>
+                <ul>
+                    <li><a href="#">Institutional Profile</a></li>
+                    <li><a href="#">Academic Schedules</a></li>
+                    <li><a href="#">Weekly Timetables</a></li>
+                    <li><a href="#">Academic Sessions</a></li>
+                    <li><a href="#">Facility Resources</a></li>
+                    <li><a href="#">Academic Departments</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h2>Administration</h2>
+                <ul>
+                    <li><a href="#">User Accounts</a></li>
+                    <li><a href="#">System Settings</a></li>
+                    <li><a href="#">Access Control</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <!-- Schedule Details Form Section -->
+            <div class="user-form">
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Schedule details</legend>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="This field is required">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" placeholder=""></textarea>
+                        </div>
+                        
+                      
+                    </fieldset>
+                    <!-- Buttons Section inside form for submission -->
+                    <div class="buttons">
+                        <button type="submit" class="next-btn">Next</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>                    
+</body>
+</html>

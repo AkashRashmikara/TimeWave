@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periods Form</title>
+    <link rel="stylesheet" href="B styles 2.css">
+    <!-- Make sure to replace "styles.css" with the actual path to your CSS file -->
+</head>
+<body>
+    <div class="periods-form">
+        <form >
+            <fieldset>
+                <legend>Periods</legend>
+                <p>Guidelines for Time Entry:</p>
+                <ul>
+                    <li>Please enter all times in the 24-hour format, ranging from 00:00 to 23:59.</li>
+                    <li>Ensure that there are no overlapping time periods.</li>
+                </ul>
+
+                <div class="form-row">
+                    <label for="bookable">Bookable</label>
+                    <input type="checkbox" id="bookable">
+                    <div class="time-entry">
+                        <label for="start-time">Start</label>
+                        <input type="time" id="start-time" required>
+                    </div>
+                    <div class="time-entry">
+                        <label for="end-time">End</label>
+                        <input type="time" id="end-time" required>
+                    </div>                    
+                </div>
+                <div class="days-of-week">
+                    <div>
+                        <input type="checkbox" id="mon" name="days">
+                        <label for="mon">Mon</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="tue" name="days">
+                        <label for="tue">Tue</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="wed" name="days">
+                        <label for="wed">Wed</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thur" name="days">
+                        <label for="thur">Thur</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="fri" name="days">
+                        <label for="fri">Fri</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sat" name="days">
+                        <label for="sat">Sat</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sun" name="days">
+                        <label for="sun">Sun</label>
+                    </div>
+                    <!-- Repeat for other days -->
+                </div>
+            </fieldset>
+            <div class="button-container">
+                <button type="button">Advance Options</button>
+                <button type="submit">Save</button>
+            </div>
+    </div>
+</body>
+</html>

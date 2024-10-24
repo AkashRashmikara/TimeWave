@@ -1,37 +1,4 @@
-/* General Styles */
-body {
-    font-family: 'Space Grotesk', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-}
 
-* {
-    box-sizing: border-box;
-}
-
-/* Dashboard Layout */
-.dashboard-container {
-    display: flex;
-    flex-grow: 1;
-    margin-top: 64px; /* Space for the fixed footer */
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-right: 1px solid #ddd;
-    height: 100vh;
-    position: fixed;
-    top: 64px; /* Space for fixed footer */
-    left: 0;
-    overflow-y: auto;
-}
-
-/* Main Content Styles */
 .main-content {
     margin-left: 250px; /* Space for fixed sidebar */
     padding: 172px 20px;

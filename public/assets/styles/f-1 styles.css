@@ -1,0 +1,98 @@
+
+
+.Academic_container {
+    margin-left: 20px; /* Adjust to match sidebar width */
+    padding: 20px;
+    width: 80% !important;
+
+
+h2 {
+    text-align: left;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-decoration: none; /* Remove the default underline */
+    position: relative; /* Required for the pseudo-element */
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    height: 2px; /* Thickness of the underline */
+    background: black; /* Color of the underline */
+    margin-top: 2px; /* Gap between the text and underline */
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+
+}
+
+th {
+    background-color: #D1F704;
+    font-weight: bold;
+}
+
+td {
+    background-color: #F9FBEF;
+}
+
+td.no-data {
+    text-align: center;
+    color: #333;
+}
+
+/* Base styles for create user button */
+.create-departments-btn {
+    border: none;
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    padding: 10px 20px; /* Padding around the button */
+    display: inline-flex;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #808080;
+    transition: color 0.3s ease, border 0.3s ease; /* Smooth transition for color and border */
+    align-items: center;
+    background-color: transparent;
+    box-sizing: border-box;
+    height: 40px; /* Fixed height to prevent movement */
+    width: auto;
+    max-width: 300px;
+    position: relative; /* Position relative for possible effects */
+    margin-top: 20px;
+}
+
+/* Icon style within the button */
+.create-departments-btn .custom-icon {
+    width: 18px; /* Adjust size */
+    height: 18px;
+    margin-right: 8px; /* Space between icon and text */
+    opacity: 0.6;
+    filter: grayscale(100%) brightness(0.8);
+    transition: opacity 0.3s ease; /* Smooth transition for icon opacity */
+}
+
+/* Hover effect for both buttons */
+.create-departments-btn:hover {
+    color: #000; /* Text turns dark on hover */
+    background-color: transparent; /* Maintain background color */
+}
+
+/* Icon hover effect */
+.create-departments-btn:hover .custom-icon {
+    opacity: 1; /* Full color on hover */
+    filter: grayscale(0); /* Remove grayscale on hover */
+}
+}
